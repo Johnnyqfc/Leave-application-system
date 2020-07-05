@@ -103,7 +103,8 @@ public class EmployeeController {
 		applicationType.add(CommConstants.LeaveType.COMPENSATION_LEAVE);
 		model.addAttribute("types", applicationType);
 		List<User> users = eService.findAllUsers();
-		List<User> collect = users.stream().filter(user -> !user.getUserType().equals(CommConstants.UserType.AMDIN))
+		List<User> collect = users.stream()
+				.filter(user -> !user.getUserType().equals(CommConstants.UserType.AMDIN))
 				.collect(Collectors.toList());
 		model.addAttribute("employees",collect);
 		return "employee/leave-form";
